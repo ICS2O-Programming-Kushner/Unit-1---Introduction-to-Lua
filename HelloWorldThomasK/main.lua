@@ -14,14 +14,19 @@ display.setStatusBar(display.HiddenStatusBar)
 display.setDefault("background", 255/255, 0/255, 0/255 )
 
 -- create a local variable
-local textObject
+local textSignature
 
 -- displays text on the screen at position x = 500 and y = 500 with
 -- a deafult font style and font size of 55
-textObject = display.newText( " By: Thomas Kushner!!", 500, 500, nil, 50 )
+textSignature = display.newText( " By: Thomas Kushner!!", 500, 500, nil, 50 )
+
+-- create a local variable
+local textObject
+
+
+-- raises the text
+textObject = display.newText("HELLO EVERYBODY!!!!!!!!", 550, 300, nil, 70)
+
 
 -- sets the color of the text
 textObject:setTextColor(0/255, 0/255, 0/255)
-
--- raises the text
-textObject: display.newText("HELLO EVERYBODY!!!!!!!!", 800, 700, nil, 80)
