@@ -18,7 +18,7 @@ scrollSpeed = 5
 local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536 )
 
 -- character image with width and height
- local beetleship = display.newImageRect("Imaged/beetleship.png", 250, 250)
+ local beetleship = display.newImageRect("Images/beetleship.png", 250, 250)
 
  -- set the image to be transparent
  beetleship.alpha = 0
@@ -38,7 +38,31 @@ local function MoveShip(event)
 	
 end  
 
---MoveShip will be calledover and over again
+-- MoveShip will be called over and over again
 Runtime: addEventListener("enterFrame", MoveShip)
 
--- character image with width and height
+-- character image with width and height 
+ local star = display.newImageRect("Images/star.png", 100, 100)
+
+-- set the image to be transparent
+star.alpha = 0
+
+-- set the initial x and y position of star
+
+star.x = 0
+star.y = display.contentHeight/1
+
+-- Function: MoveStar
+-- Input: this function accepts an event listener
+-- Output: none
+local function MoveStar(event)
+	-- add the scroll speed to the x-value
+	-- change the transparency of the ship every time it moves so it fades out
+	star.x = star.x - scrollSpeed
+	star.alpha = star.alpha + 0.03
+	
+end
+-- MoveStar will be called over and over again
+Runtime: addEventListener("enterFrame", MoveStar)
+
+
