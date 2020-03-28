@@ -41,28 +41,24 @@ end
 -- MoveShip will be called over and over again
 Runtime: addEventListener("enterFrame", MoveShip)
 
--- character image with width and height 
- local star = display.newImageRect("Images/star.png", 100, 100)
+-- create local variables
+local reddit = display.newImageRect("Image/reddit.png", 2048, 1536)
 
--- set the image to be transparent
-star.alpha = 0
 
--- set the initial x and y position of star
 
-star.x = 0
-star.y = display.contentHeight/1
+-- set the intial x and y position of reddit
+reddit.x = 300
+reddit.y = display.contentHeight/1
 
--- Function: MoveStar
--- Input: this function accepts an event listener
+-- Function: MoveReddit
+-- Input: this fuction accepts an event listener
 -- Output: none
-local function MoveStar(event)
-	-- add the scroll speed to the x-value
-	-- change the transparency of the ship every time it moves so it fades out
-	star.x = star.x - scrollSpeed
-	star.alpha = star.alpha + 0.03
+local function MoveReddit(event)
+	-- add the scroll speed to the x-value of the ship
+	-- change the transparency of the ship every time it moves so that it fades out
+	reddit.x = reddit.x - scrollSpeed
+     reddit.alpha = reddit.alpha + 0.03
 	
-end
--- MoveStar will be called over and over again
-Runtime: addEventListener("enterFrame", MoveStar)
+end  
 
-
+Runtime: addEventListener("enterFrame", MoveReddit)
