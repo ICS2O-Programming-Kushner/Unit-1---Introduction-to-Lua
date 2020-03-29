@@ -45,22 +45,22 @@ local function AskQuestion()
 end
 
 local function HideCorrect()
-	 correctObject.isVisible = false
-	 incorrectObject.isVisible = false
-	 checkmark.isVisible = false
-	 redX.isVisible = false
-	 AskQuestion()
+	correctObject.isVisible = false
+	AskQuestion()
 end
 
-local function NumericFieldListener(event)
-	-- user begins editing the numeric field
-	if ( event.phase == "began") then
+local function HideIncorrect()
+	incorrectObject.isVisible = false
+    AskQuestion()
+end		
 
-		-- clear the text field
-		event.target.text = ""
+local function NumericFieldListener (event)
+	-- User begins editing numericField
+	if ( event.target.text == "began" ) then
+
     
     elseif ( event.phase == "submitted" ) then
-
+         
     	-- when the answer is submitted (enter key is pressed) set user input to user's answer
     	userAnswer = tonumber(event.target.text)
 
@@ -110,11 +110,8 @@ redX.x = 500
 redX.y = 400
 redX.isVisible = false
 
--- add the event listener for the numeric field.
-
---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 -- FUNCTION CALLS
----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
 
--- call the function to ask the question
 AskQuestion()
