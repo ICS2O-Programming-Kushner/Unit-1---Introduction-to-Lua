@@ -27,6 +27,16 @@ local textSize = 50
 local incorrect = 0
 local actualAnswerText 
 
+--------------------------------------------------------------------------------------------------------
+-- SOUNDS
+----------------------------------------------------------------------------------------------------------
+-- create the Sounds 
+local wrongSound = audio.loadSound( "Sounds/wrongSound.mp3" ) -- Setting a variable to an mp3 file
+local wrongSoundChannel
+
+local correctSound = audio.loadSound( "Sounds/correctSound.mp3" ) -- Setting a variable to an mp3 file
+local correctSoundChannel
+
 ----------------------------------------------------------------------
 --LOCAL FUNCTIONS
 ----------------------------------------------------------------------
@@ -48,12 +58,33 @@ local function AskQuestion()
 		-- create question in text object 
 		questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
 
-	-- otherwise, if the random operatio is 2, do subtraction 
+	-- otherwise, if the random operatior is 2, do subtraction 
 	elseif (randomOperator == 2) then 
+		
 		-- calculate the correct answer 
-		correctAnswer = randomNumber1 - randomNumber2 
+		correctAnswer = randomNumber1 - randomNumber2
 
 		-- create question in text object 
+		questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = " 
+
+    -- if the random operator is 3, do multiplication
+    elseif (randomOperator == 3) then
+        
+        -- calculate the correct answer
+        correctAnswer = randomNumber1 * randomNumber2
+
+        -- create question in text object
+        questionObject.text = randomNumber1 .. " * " .. randomNumber2
+   
+    -- if the random operator is 4, do division
+    elseif (randomOperator == 3) then
+        
+        -- calculate the correct answer
+        correctAnswer = randomNumber1 / randomNumber2
+
+        -- create question in text object
+        questionObject.text = randomNumber1 .. " / " .. randomNumber2
+
 	end
 end 
 
@@ -84,11 +115,13 @@ local function NumericFieldListener( event )
 		if (userAnswer == correctAnswer) then 
 			event.target.text = ""
 			correctObject.isVisible = true 
+			correctSoundChannel = audio.play(correctSound)
 			timer.performWithDelay(2100, HideCorrect)
 		else
 			event.target.text = ""					
 			inCorrectObject.isVisible = true
-			timer.performWithDelay(2500, HideInCorrect)
+			wrongSoundChannel = audio.play(wrongSound)
+			timer.performWithDelay(2100, HideInCorrect)
 		end
 	end
 end

@@ -73,8 +73,8 @@ local function NumericFieldListener (event)
 	        timer.performWithDelay(3000, HideCorrect)
 	    end
 
-	    -- clear the text field
-	    event.target.text = ""
+
+	    
     end
 end 
 
@@ -95,9 +95,9 @@ numericField = native.newTextField( display.contentWidth*2/3, display.contentHei
 numericFieldinputType= "number"
 
 -- create the incorrect text object
-incorrectObject = display.newText("Incorrect. Try another one", display.contentWidth*1/3, display.contentHeight*1/3, nil, 50)
-incorrectObject:setTextColor(2/255, 60/255, 255/255)
-
+incorrectObject = display.newText("Wrong.", 500, 150, nil, 50 )
+incorrectObject:setTextColor(209/255, 209/255, 209/255)
+incorrectObject.isVisible = false 
 -- create the checkmark
 checkmark = display.newImageRect("Images/checkmark.png", 198, 96)
 checkmark.x = 500
