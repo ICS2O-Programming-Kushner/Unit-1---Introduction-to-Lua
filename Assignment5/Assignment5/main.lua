@@ -1,6 +1,6 @@
--- MathFun
+-- Assignment5
 -- Thomas K 
--- Course: ICS2O
+-- ICS2O
 -- This prorgram displays a series of math questions in which the user will answer. 
 -- There are timers, lives, points, and a text field where the user answers
 ----------------------------------------------------------------------------------------------------
@@ -115,22 +115,7 @@ local function AskQuestion()
     end
 end
 
-local function UpdateTime()
-
-	-- decrement the number of seconds
-	secondsLeft = secondsLeft - 1
-
-	-- display the number of seconds left in the clock object
-	clockText.text = secondsLeft .. ""
-
-	if (secondsLeft == 0) then
-		-- reset the number of seconds left
-		LoseLives()
-		AskQuestion()
-	end
-end
-
-local function LoseHearts()
+local function LoseLives()
 
 	incorrectSoundChannel = audio.play(incorrectSound)
 
@@ -154,6 +139,23 @@ local function LoseHearts()
 		backgroundSound = audio.stop(backgroundSoundChannel)
 	end
 end
+
+local function UpdateTime()
+
+	-- decrement the number of seconds
+	secondsLeft = secondsLeft - 1
+
+	-- display the number of seconds left in the clock object
+	clockText.text = secondsLeft .. ""
+
+	if (secondsLeft == 0) then
+		-- reset the number of seconds left
+		LoseLives()
+	    AskQuestion()
+	end
+end
+
+
 
 -- function that calls the timer
 local function StartTimer()
