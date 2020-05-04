@@ -6,6 +6,9 @@
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+-- set background colour
+display.setDefault("background", 255/255, 255/255, 255/255)
+
 -- load physics
 local physics = require("physics")
 
@@ -28,55 +31,7 @@ local ground = display.newImage("Images/ground.png", 0, 0)
 	ground.y = display.contentHeight* 96/100
 
 	-- add to physics
-	physics.addBody(ground, "static", {friction = 0.5, bounce = 0.3})
-
-local beam = display.newImage("Images/beam.png", 0, 0)
-
-	-- set the x and y pos
-	beam.x = display.contentCenterX/5
-	beam.y = display.contentCenterY*1.65
-
-	beam.width = display.contentWidth/2
-	beam.height = display.contentHeight* 1/10
-
-	-- rotate the beam -60 degrees so it's on an angle
-	beam:rotate(45)
-
-	--send it to the back layer
-	beam:toBack()
-
-	-- add to physics
-	physics.addBody(beam, "static", {friction = 0.5,})
-
-local wall = display.newImage("Images/beam_long.png", 0, 0)
-	
-	-- set the x and y pos
-	wall.x = display.contentWidth/1.05
-	wall.y = display.contentHeight/2
-
-	-- set the dimensions of the wall
-	wall.width = display.contentWidth/10
-	wall.height = display.contentHeight
-
-	-- send it to the back layer
-	wall:toBack()
-
-	-- add to physics
-	physics.addBody(wall, "static", {friction = 0.5, bounce = 0.3})
-
--- create bgk
-local bkg = display.newImage("Images/bkg.png", 0, 0)
-	
-	--set the x and y pos
-	bkg.x = display.contentCenterX
-	bkg.y = display.contentCenterY
-
-	bkg.width = display.contentWidth
-	bkg.height = display.contnetHeight
-
-	-- send to back
-	bkg:toBack()
-
+	physics.addBody(ground, "static", {friction = 0.5, bounce = 0.3} )
 
 
 -----------------------------------------------------------------------------------------
@@ -86,7 +41,7 @@ local bkg = display.newImage("Images/bkg.png", 0, 0)
 -- create the firat ball
 local function FirstBall()
 	-- creating first ball
-	local ball1 = display.newImage("Images/super_ball.png", 0, 0)
+	local ball1 = display.newImage("Images/ball.png", 100, 300)
 
 	ball1.width = 75
 	ball1.height = 75
@@ -97,7 +52,7 @@ end
 
 local function SecondBall()
 	--create the second ball
-	local ball2 = display.newImage("Images/super_ball.png", 0, 0)
+	local ball2 = display.newImage("Images/ball.png", 600, 200)
 
 	ball2.width = 25
 	ball2.height = 25
@@ -108,7 +63,7 @@ end
 
 local function ThirdBall()
 	--create the third ball
-	local ball3 = display.newImage("Images/super_ball.png", 0, 0)
+	local ball3 = display.newImage("Images/ball.png", 700, 100)
 
 	ball3.width = 8
 	ball3.height = 8
@@ -119,7 +74,7 @@ end
 
 local function FourthBall()
 	--create the fourth ball
-	local ball4 = display.newImage("Images/super_ball.png", 0, 0)
+	local ball4 = display.newImage("Images/ball.png", 500, 300)
 
 	ball4.width = 150
 	ball4.height = 150
