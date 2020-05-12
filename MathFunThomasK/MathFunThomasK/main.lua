@@ -1,5 +1,5 @@
 -- Title: MathFun
--- Name: Ina 
+-- Name: Thomas
 -- Course: ICS2O
 -- This program 
 
